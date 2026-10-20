@@ -10,7 +10,7 @@
 # Workflow Configuration (exported as environment variables by Alfred):
 #   target_language     default target language                       (default: English)
 #   secondary_language  target if the text is already in target_language (default: German)
-#   model               Claude model alias                            (default: haiku)
+#   model               Claude model alias                            (default: sonnet)
 #   claude_path         path to the claude CLI                        (default: ~/.local/bin/claude)
 
 query="$1"
@@ -19,7 +19,7 @@ claude_bin="${claude_path:-$HOME/.local/bin/claude}"
 claude_bin="${claude_bin/#\~/$HOME}"
 target_language="${target_language:-English}"
 secondary_language="${secondary_language:-German}"
-model="${model:-haiku}"
+model="${model:-sonnet}"
 cache_dir="${alfred_workflow_cache:-${TMPDIR:-/tmp}/claude-translate}"
 cache_days=7
 
@@ -55,13 +55,15 @@ if (( explicit )); then
 else
   rule="Choose the target language like this:
 - Source text written in ${target} -> translate into ${secondary_language}.
-- Source text written in ANY other language -> translate into ${target}."
+- Source text written in ANY other language -> translate into ${target}.
+- A single word or short phrase can be a real word in ${target} AND in another language at the same time (e.g. \"bank\" is English for a financial institution and German for a bench; \"Gift\" is English for a present and German for poison). Then translate BOTH readings: the other-language reading into ${target}, and the ${target} reading into ${secondary_language}. List the more likely reading first:
+  [{\"source\": \"<other language>\", \"target\": \"${target}\", ...}, ..., {\"source\": \"${target}\", \"target\": \"${secondary_language}\", ...}, ...]"
 fi
 
 system_prompt="You are a translation engine. Automatically detect the language of the text inside <text> tags. ${rule}
 
 Respond with a single JSON object and nothing else (no code fences):
-{\"source\": \"<detected source language>\", \"target\": \"<target language>\", \"translations\": [{\"text\": \"<translation>\", \"note\": \"<short note>\"}]}
+{\"translations\": [{\"source\": \"<source language>\", \"target\": \"<target language>\", \"text\": \"<translation>\", \"note\": \"<short note>\"}]}
 Write the language names as full names (never codes like \"en\") and all notes in ${target_language}.
 
 Variants:

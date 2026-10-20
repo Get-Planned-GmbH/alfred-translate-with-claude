@@ -19,7 +19,7 @@ Translate text via the `trans` keyword. Results appear as you type, after a shor
 * <kbd>⌘</kbd><kbd>C</kbd> Copy without closing Alfred
 * <kbd>⌘</kbd><kbd>L</kbd> Show the translation in Large Type
 
-Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead.
+Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead. Words that exist in both languages, like *bank* or *Gift*, are translated in both directions.
 
 ![With German as the target language, German text is translated into English](images/secondary-language.png)
 

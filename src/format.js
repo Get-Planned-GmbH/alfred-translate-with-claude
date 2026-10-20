@@ -13,18 +13,19 @@ function run() {
     data = JSON.parse(json);
     if (!Array.isArray(data.translations) || data.translations.length === 0) throw new Error();
   } catch (e) {
-    // No valid JSON: show the plain response as a single translation
-    const text = raw.trim();
-    return JSON.stringify({ items: [item(text, "Translation", text)] });
+    return JSON.stringify({ items: [{ title: "Couldn’t read Claude’s response", subtitle: "Please try again or change the text slightly", valid: false }] });
   }
 
   $(raw).writeToFileAtomicallyEncodingError(get("CACHE_FILE"), true, $.NSUTF8StringEncoding, null);
 
-  const direction = [data.source, data.target].filter(Boolean).join(" → ");
+  // Each translation has its own direction: ambiguous words (e.g. "bank") are translated both ways
   const seen = new Set();
   const items = data.translations
     .filter((t) => t && t.text && !seen.has(t.text) && seen.add(t.text))
-    .map((t) => item(t.text, [direction, t.note].filter(Boolean).join(" · "), t.text));
+    .map((t) => {
+      const direction = [t.source || data.source, t.target || data.target].filter(Boolean).join(" → ");
+      return item(t.text, [direction, t.note].filter(Boolean).join(" · "), t.text);
+    });
   return JSON.stringify({ items });
 }
 

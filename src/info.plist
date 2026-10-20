@@ -148,7 +148,7 @@ Translate text via the `trans` keyword. Results appear as you type, after a shor
 * &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;C&lt;/kbd&gt; Copy without closing Alfred
 * &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;L&lt;/kbd&gt; Show the translation in Large Type
 
-Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead.
+Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead. Words that exist in both languages, like *bank* or *Gift*, are translated in both directions.
 
 To pick another target language, start the query with `&gt;` and a language name or code, for example `trans &gt;fr Good morning` or `trans &gt;español Good morning`.
 
@@ -257,16 +257,16 @@ This is an unofficial community workflow and is not affiliated with or endorsed 
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>haiku</string>
+				<string>sonnet</string>
 				<key>pairs</key>
 				<array>
 					<array>
-						<string>Haiku (fast)</string>
-						<string>haiku</string>
+						<string>Sonnet (recommended)</string>
+						<string>sonnet</string>
 					</array>
 					<array>
-						<string>Sonnet</string>
-						<string>sonnet</string>
+						<string>Haiku (faster)</string>
+						<string>haiku</string>
 					</array>
 					<array>
 						<string>Opus</string>
@@ -275,7 +275,7 @@ This is an unofficial community workflow and is not affiliated with or endorsed 
 				</array>
 			</dict>
 			<key>description</key>
-			<string>Haiku is fastest; Sonnet and Opus are more precise but slower</string>
+			<string>Sonnet is the most reliable choice. Haiku is faster but less accurate with words that exist in several languages</string>
 			<key>label</key>
 			<string>Model</string>
 			<key>type</key>
