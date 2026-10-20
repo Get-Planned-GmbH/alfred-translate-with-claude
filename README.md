@@ -12,7 +12,7 @@ Install [Claude Code](https://claude.com/claude-code) and log in once by running
 
 Translate text via the `trans` keyword. Results appear as you type, after a short pause.
 
-![Translating a German word into English](images/usage.png)
+![Translating an English word into German, with several variants](images/usage.png)
 
 * <kbd>↩︎</kbd> Copy the translation
 * <kbd>⌘</kbd><kbd>↩︎</kbd> Paste the translation into the frontmost app
@@ -20,6 +20,8 @@ Translate text via the `trans` keyword. Results appear as you type, after a shor
 * <kbd>⌘</kbd><kbd>L</kbd> Show the translation in Large Type
 
 Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead.
+
+![With German as the target language, German text is translated into English](images/secondary-language.png)
 
 To pick another target language, start the query with `>` and a language name or code, for example `trans >fr Good morning` or `trans >español Good morning`.
 
