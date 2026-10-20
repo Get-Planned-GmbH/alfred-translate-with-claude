@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>gmbh.getplanned.translate-with-claude</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>A1B2C3D4-0001-4000-8000-000000000001</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A1B2C3D4-0003-4000-8000-000000000003</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A1B2C3D4-0005-4000-8000-000000000005</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Percy Downing</string>
+	<key>description</key>
+	<string>Translate text with Claude, with multiple variants for single words</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Translate with Claude</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>1</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>{var:keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Translating…</string>
+				<key>script</key>
+				<string>./filter.sh "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Type text · pick a target language with &gt;de, &gt;fr, &gt;spanish …</string>
+				<key>title</key>
+				<string>Translate with Claude</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A1B2C3D4-0001-4000-8000-000000000001</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>A1B2C3D4-0003-4000-8000-000000000003</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>A1B2C3D4-0005-4000-8000-000000000005</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Translate text in [Alfred](https://www.alfredapp.com) with Claude. The source language is detected automatically; for single words you get several translations, each with a short note on its meaning.
+
+The workflow uses your own [Claude Code](https://claude.com/claude-code) login (Claude subscription or API account). No API key has to be entered in Alfred.
+
+## Setup
+
+Install [Claude Code](https://claude.com/claude-code) and log in once by running `claude` in Terminal.
+
+## Usage
+
+Translate text via the `trans` keyword. Results appear as you type, after a short pause.
+
+* &lt;kbd&gt;↩︎&lt;/kbd&gt; Copy the translation
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;↩︎&lt;/kbd&gt; Paste the translation into the frontmost app
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;C&lt;/kbd&gt; Copy without closing Alfred
+* &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;L&lt;/kbd&gt; Show the translation in Large Type
+
+Text is translated into the target language from the Workflow’s Configuration. Text that is already in the target language is translated into the secondary language instead.
+
+To pick another target language, start the query with `&gt;` and a language name or code, for example `trans &gt;fr Good morning` or `trans &gt;español Good morning`.
+
+## Privacy
+
+The text you type is sent to Anthropic by Claude Code, under your Claude account. Translations are cached locally in the workflow’s cache folder for 7 days, so repeated queries are instant and don’t count against your usage limits.
+
+## Disclaimer
+
+This is an unofficial community workflow and is not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic.
+</string>
+	<key>uidata</key>
+	<dict>
+		<key>A1B2C3D4-0001-4000-8000-000000000001</key>
+		<dict>
+			<key>xpos</key>
+			<real>40.0</real>
+			<key>ypos</key>
+			<real>100.0</real>
+		</dict>
+		<key>A1B2C3D4-0003-4000-8000-000000000003</key>
+		<dict>
+			<key>note</key>
+			<string>↩ kopieren</string>
+			<key>xpos</key>
+			<real>300.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
+		</dict>
+		<key>A1B2C3D4-0005-4000-8000-000000000005</key>
+		<dict>
+			<key>note</key>
+			<string>⌘↩ einfügen</string>
+			<key>xpos</key>
+			<real>300.0</real>
+			<key>ypos</key>
+			<real>170.0</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>trans</string>
+				<key>placeholder</key>
+				<string>trans</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword that starts a translation</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>English</string>
+				<key>placeholder</key>
+				<string>English</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Language to translate into, e.g. English, Deutsch, Español. Notes are written in this language too</string>
+			<key>label</key>
+			<string>Target language</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>target_language</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>German</string>
+				<key>placeholder</key>
+				<string>German</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Used instead when the text is already in the target language</string>
+			<key>label</key>
+			<string>Secondary language</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>secondary_language</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>haiku</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Haiku (fast)</string>
+						<string>haiku</string>
+					</array>
+					<array>
+						<string>Sonnet</string>
+						<string>sonnet</string>
+					</array>
+					<array>
+						<string>Opus</string>
+						<string>opus</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Haiku is fastest; Sonnet and Opus are more precise but slower</string>
+			<key>label</key>
+			<string>Model</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>model</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>~/.local/bin/claude</string>
+				<key>placeholder</key>
+				<string>~/.local/bin/claude</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Path to the claude command line tool. Other common install locations are found automatically</string>
+			<key>label</key>
+			<string>Claude Code path</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>claude_path</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/Get-Planned-GmbH/alfred-translate-with-claude</string>
+</dict>
+</plist>
