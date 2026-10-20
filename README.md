@@ -12,7 +12,7 @@ Install [Claude Code](https://claude.com/claude-code) and log in once by running
 
 Translate text via the `trans` keyword. Results appear as you type, after a short pause.
 
-![Translating an English word into German, with several variants](images/usage.png)
+![Translating a word that exists in English and German, in both directions](images/usage.png)
 
 * <kbd>↩︎</kbd> Copy the translation
 * <kbd>⌘</kbd><kbd>↩︎</kbd> Paste the translation into the frontmost app
