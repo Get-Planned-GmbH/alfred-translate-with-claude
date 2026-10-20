@@ -62,7 +62,7 @@ system_prompt="You are a translation engine. Automatically detect the language o
 
 Respond with a single JSON object and nothing else (no code fences):
 {\"source\": \"<detected source language>\", \"target\": \"<target language>\", \"translations\": [{\"text\": \"<translation>\", \"note\": \"<short note>\"}]}
-Write the language names and all notes in ${target_language}.
+Write the language names as full names (never codes like \"en\") and all notes in ${target_language}.
 
 Variants:
 - Single word or short phrase (up to about 4 words): give 2 to 5 distinct common translations, most common first. Each note briefly says which meaning or context it covers (e.g. \"financial institution\", \"colloquial\"), max. 6 words. For nouns in languages with grammatical gender, include the article (e.g. \"die Bank\").
